@@ -6,9 +6,11 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const multer = require("multer");
 const path = require("path");
-const userRouter = require("./routes/users");
-const authRouter = require("./routes/auth");
-const postRouter = require("./routes/posts");
+const userRoute = require("./routes/users");
+const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
+const conversationRoute = require("./routes/conversations")
+const messageRoute = require("./routes/messages");
 
 dotenv.config();
 //mongodb
@@ -27,9 +29,11 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
-app.use("/api/users", userRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/posts", postRouter);
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/posts", postRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 //multer
 const storage = multer.diskStorage({
