@@ -9,7 +9,7 @@ const path = require("path");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
-const conversationRoute = require("./routes/conversations")
+const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 
 dotenv.config();
@@ -53,7 +53,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
     console.log(error);
   }
 });
-
-app.listen(2660, () => {
+const port = process.env.PORT;
+app.listen(port, () => {
   console.log("server is running");
 });
